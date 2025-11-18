@@ -1,13 +1,13 @@
 name: CI
 
-on: push
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # checks out the current git commit so we can use it.
-      # read more at https://github.com/orgs/community/discussions/25682
       - uses: actions/checkout@v4
       - name: Run a one-line script
         run: echo "Write your CI workflow here!"
@@ -15,6 +15,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Test the code
-        run: echo "Replace this with the test code"
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
