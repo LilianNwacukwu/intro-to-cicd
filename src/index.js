@@ -1,5 +1,5 @@
 function sayHi(name) {
-  return `Hello World ${name}`
+  return `Hello ${name}`
   // Hello, this is Engineer Lilian!
 }
 
